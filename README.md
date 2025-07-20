@@ -12,7 +12,7 @@ npm install
 firebase deploy --only functions
 
 
-## 🔍 How to Test the Backend API (Phase 1)
+## How to Test the Backend API (Phase 1)
 
 After deploying the backend to Firebase, follow these steps to test the API using Postman:
 
