@@ -51,6 +51,6 @@ https://us-central1-epiccharacterdictionary.cloudfunctions.net/api
 
 Make sure you’ve deployed your Firestore security rules and that your `idToken` matches the authenticated Firebase user.
 
-If requests return `403 Forbidden`, double-check your Firestore rules and ensure your authenticated user's UID matches the Firestore document paths.
+If requests return `403 Forbidden`, double-check your Firestore rules and ensure your authenticated user's UID matches the Firestore document paths. Also, double-check the `idToken` from the page or browser console, see if it is most up-to-date.
 
 You can use **Postman** or **Insomnia** to send requests with your `idToken`. Ensure Firestore rules are deployed correctly.
