@@ -31,4 +31,25 @@ router.post('/:dictionaryId', auth, async (req, res) => {
   }
 });
 
+
+router.get('/:dictionaryId', auth, async (req, res) => {
+  const { dictionaryId } = req.params;
+
+  try {
+    const snapshot = await db
+      .collection('users')
+      .doc(req.user.uid)
+      .collection('dictionaries')
+      .doc(dictionaryId)
+      .collection('characters')
+      .get();
+
+    const characters = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    res.status(200).json(characters);
+  } catch (err) {
+    console.error('Fetch Characters Error:', err);
+    res.status(500).json({ error: 'Failed to fetch characters' });
+  }
+});
+
 module.exports = router;

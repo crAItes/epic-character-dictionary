@@ -11,9 +11,13 @@ app.use(cors({ origin: true }));
 app.use(express.json());
 
 // Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/dictionaries', dictionaryRoutes);
-app.use('/api/characters', characterRoutes);
+app.use('/auth', authRoutes);
+app.use('/dictionaries', dictionaryRoutes);
+app.use('/characters', characterRoutes);
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the Epic Character Dictionary API!');
+});
 
 // Deployable function
 exports.api = functions.https.onRequest(app);

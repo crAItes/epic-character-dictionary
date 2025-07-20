@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "epic-character-dictionary"
-  }
+    "default": "epiccharacterdictionary",
+    "staging": "epiccharacterdictionary",
+    "stagingv2": "epiccharacterdictionary"
+  },
+  "targets": {},
+  "etags": {}
 }

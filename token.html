@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Firebase Token Generator</title>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <h2>Firebase Token Generator</h2>
+  <p>Open the console (Right-click > Inspect > Console) to see logs.</p>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDNRC_NIQXfmKaHXms8qHnSZZud4hA1yqU",
+      authDomain: "epiccharacterdictionary.firebaseapp.com",
+      projectId: "epiccharacterdictionary"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    const email = "christianrhodes.86@gmail.com";        // 👈 Replace with a valid Firebase Auth user
+    const password = "8bitW@nderland";       // 👈 Use a strong password you registered with
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(userCredential => {
+        return userCredential.user.getIdToken();
+      })
+      .then(idToken => {
+        console.log("✅ Firebase ID Token:", idToken);
+        document.body.innerHTML += `
+          <h3>Copy this token for Postman:</h3>
+          <textarea rows="12" cols="100">${idToken}</textarea>
+        `;
+      })
+      .catch(error => {
+        console.error("❌ Auth Error:", error.message);
+        document.body.innerHTML += `<p style="color:red">${error.message}</p>`;
+      });
+  </script>
+</body>
+</html>
